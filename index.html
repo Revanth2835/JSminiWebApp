@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn JavaScript - A modern, responsive platform to master JavaScript from beginner to advanced.">
+  <title>Learn JavaScript | Master the Web</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <span class="js-logo">JS</span>
+        <h1>Learn JavaScript</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="#beginner">Beginner</a></li>
+        <li><a href="#intermediate">Intermediate</a></li>
+        <li><a href="#advanced">Advanced</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      
+      <!-- Mobile menu toggle -->
+      <button id="mobile-menu-btn" class="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h2 class="hero-title">Master the Language of the Web</h2>
+      <p class="hero-tagline">From your first variable to complex asynchronous applications, build a rock-solid foundation in modern JavaScript.</p>
+      <a href="#beginner" class="btn btn-primary hero-btn">Start Learning</a>
+    </div>
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <section id="levels" class="levels-section">
+      <div class="section-header">
+        <h2>Your Learning Path</h2>
+        <p>Choose your starting point based on your current experience level.</p>
+      </div>
+      
+      <div class="cards-grid">
+        <!-- Beginner Card -->
+        <div class="level-card" id="beginner">
+          <div class="card-header">
+            <h3>Beginner</h3>
+            <span class="badge">Start Here</span>
+          </div>
+          <p>Learn the absolute basics of programming with JavaScript. No prior experience required.</p>
+          <ul class="topic-list">
+            <li><a href="pages/beginner/variables.html">Variables (var, let, const)</a></li>
+            <li><a href="pages/beginner/data-types.html">Data Types</a></li>
+            <li><a href="pages/beginner/strings.html">Strings & Methods</a></li>
+            <li><a href="pages/beginner/conditionals.html">Conditionals (If/Else)</a></li>
+            <li><a href="pages/beginner/loops.html">Loops (For, While)</a></li>
+          </ul>
+        </div>
+
+        <!-- Intermediate Card -->
+        <div class="level-card" id="intermediate">
+          <div class="card-header">
+            <h3>Intermediate</h3>
+            <span class="badge intermediate">Level Up</span>
+          </div>
+          <p>Dive deeper into JavaScript's core mechanics and powerful data structures.</p>
+          <ul class="topic-list">
+            <li><a href="pages/intermediate/objects.html">Objects & Properties</a></li>
+            <li><a href="pages/intermediate/functions.html">Functions & Arrow Functions</a></li>
+            <li><a href="pages/intermediate/arrays.html">Arrays & Methods (Map, Filter, Reduce)</a></li>
+          </ul>
+        </div>
+
+        <!-- Advanced Card -->
+        <div class="level-card" id="advanced">
+          <div class="card-header">
+            <h3>Advanced</h3>
+            <span class="badge advanced">Pro</span>
+          </div>
+          <p>Master complex asynchronous patterns and deep JavaScript architecture.</p>
+          <ul class="topic-list">
+            <li><a href="pages/advanced/closures.html">Closures & Lexical Scope</a></li>
+            <li><a href="pages/advanced/promises.html">Promises & Async/Await</a></li>
+            <li><a href="pages/advanced/interview-questions.html">Common Interview Questions</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content container">
+      <p>&copy; <span id="year"></span> Learn JavaScript Platform. Built for educational purposes.</p>
+      <div class="footer-links">
+        <a href="#">Github</a>
+        <a href="#">Resources</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

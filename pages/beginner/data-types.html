@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Types | Learn JavaScript</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body data-lesson-id="data-types">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <span class="js-logo">JS</span>
+        <h1><a href="../../index.html" style="color:inherit;text-decoration:none;">Learn JavaScript</a></h1>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line></svg>
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="container lesson-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-list">
+        <li><h3>Beginner</h3></li>
+        <li><a href="../beginner/variables.html">Variables</a></li>
+        <li><a href="../beginner/data-types.html" class="active">Data Types</a></li>
+        <li><a href="../beginner/strings.html">Strings & Methods</a></li>
+        <li><a href="../beginner/conditionals.html">Conditionals</a></li>
+        <li><a href="../beginner/loops.html">Loops</a></li>
+        <li><h3 style="margin-top:1.5rem">Intermediate</h3></li>
+        <li><a href="../intermediate/objects.html">Objects</a></li>
+        <li><a href="../intermediate/functions.html">Functions</a></li>
+        <li><a href="../intermediate/arrays.html">Arrays & Methods</a></li>
+        <li><h3 style="margin-top:1.5rem">Advanced</h3></li>
+        <li><a href="../advanced/closures.html">Closures</a></li>
+        <li><a href="../advanced/promises.html">Promises & Async</a></li>
+        <li><a href="../advanced/interview-questions.html">Interview Qs</a></li>
+      </ul>
+    </aside>
+
+    <article class="lesson-content">
+      <h1 class="lesson-title">Basic Data Types</h1>
+      <p class="lesson-definition">Data types specify the kind of data a variable holds. JavaScript is dynamically typed, meaning the same variable can hold different data types at different times.</p>
+
+      <details class="analogy-box">
+        <summary>Real-world Analogy</summary>
+        <div class="details-content">
+          <p>If variables are boxes, Data Types refer to what the object inside the box actually is. Is it a piece of text (String)? A math quantity (Number)? A True/False switch (Boolean)? Knowing the type tells you what you can do with it.</p>
+        </div>
+      </details>
+
+      <section class="code-section">
+        <h3>Syntax Overview</h3>
+        <p>The core primitive data types in JavaScript:</p>
+        <pre><code><span class="token-keyword">let</span> text = <span class="token-string">"Hello!"</span>; <span class="token-comment">// String</span>
+<span class="token-keyword">let</span> count = <span class="token-number">42</span>; <span class="token-comment">// Number</span>
+<span class="token-keyword">let</span> isActive = <span class="token-keyword">true</span>; <span class="token-comment">// Boolean (true/false)</span>
+<span class="token-keyword">let</span> notDefinedYet; <span class="token-comment">// undefined</span>
+<span class="token-keyword">let</span> emptyValue = <span class="token-keyword">null</span>; <span class="token-comment">// null</span></code></pre>
+      </section>
+
+      <div class="runner-container">
+        <div class="runner-header">
+          <span>Interactive Example</span>
+          <button class="btn btn-primary run-code-btn" style="padding: 0.3rem 0.8rem;">Run Code ▶</button>
+        </div>
+        <textarea class="runner-code" spellcheck="false">
+const message = "JavaScript is awesome"; // String
+const level = 10; // Number
+const isLoggedStatus = false; // Boolean
+
+console.log("Type of message:", typeof message);
+console.log("Type of level:", typeof level);
+console.log("Type of isLoggedStatus:", typeof isLoggedStatus);
+        </textarea>
+        <div class="runner-output-box">Output will appear here...</div>
+      </div>
+
+      <section class="practice-section">
+        <h3>Practice Questions</h3>
+        <div class="practice-q">
+          <strong>1.</strong> Use the <code>typeof</code> operator to find out what type <code>typeof 100</code> returns.
+        </div>
+        <div class="practice-q">
+          <strong>2.</strong> What is the difference between <code>undefined</code> and <code>null</code>?
+        </div>
+      </section>
+
+      <div class="lesson-footer">
+        <button id="mark-complete-btn" class="btn btn-primary">Mark as Complete</button>
+        <a href="../beginner/strings.html" class="btn btn-outline">Next: Strings & Methods ➔</a>
+      </div>
+    </article>
+  </main>
+
+  <script src="../../js/script.js"></script>
+</body>
+</html>

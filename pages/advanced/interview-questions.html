@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Questions | Learn JavaScript</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body data-lesson-id="interview-questions">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <span class="js-logo">JS</span>
+        <h1><a href="../../index.html" style="color:inherit;text-decoration:none;">Learn JavaScript</a></h1>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line></svg>
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="container lesson-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-list">
+        <li><h3>Beginner</h3></li>
+        <li><a href="../beginner/variables.html">Variables</a></li>
+        <li><a href="../beginner/data-types.html">Data Types</a></li>
+        <li><a href="../beginner/strings.html">Strings & Methods</a></li>
+        <li><a href="../beginner/conditionals.html">Conditionals</a></li>
+        <li><a href="../beginner/loops.html">Loops</a></li>
+        <li><h3 style="margin-top:1.5rem">Intermediate</h3></li>
+        <li><a href="../intermediate/objects.html">Objects</a></li>
+        <li><a href="../intermediate/functions.html">Functions</a></li>
+        <li><a href="../intermediate/arrays.html">Arrays & Methods</a></li>
+        <li><h3 style="margin-top:1.5rem">Advanced</h3></li>
+        <li><a href="../advanced/closures.html">Closures</a></li>
+        <li><a href="../advanced/promises.html">Promises & Async</a></li>
+        <li><a href="../advanced/interview-questions.html" class="active">Interview Qs</a></li>
+      </ul>
+    </aside>
+
+    <article class="lesson-content">
+      <h1 class="lesson-title">Interview Based Questions</h1>
+      <p class="lesson-definition">Output-based JavaScript questions are incredibly common in technical interviews. They test your knowledge of hoisting, closures, event loop, and tricky type coercions.</p>
+
+      <details class="analogy-box">
+        <summary>Real-world Analogy</summary>
+        <div class="details-content">
+          <p>These questions are like riddles. The engine doesn't always read code exactly how human intuition expects. Mastering these riddles proves you understand the deep gears of the JavaScript engine.</p>
+        </div>
+      </details>
+
+      <section class="code-section">
+        <h3>Syntax Overview</h3>
+        <p>A classic scoping trick:</p>
+        <pre><code><span class="token-keyword">for</span> (<span class="token-keyword">var</span> i = <span class="token-number">0</span>; i < <span class="token-number">3</span>; i++) {
+  setTimeout(() => console.log(i), <span class="token-number">100</span>);
+}
+<span class="token-comment">// OUTPUT: 3, 3, 3</span>
+<span class="token-comment">// Explanation: 'var' is function-scoped. By the time the timeout runs, the loop has finished and 'i' is exactly 3.</span></code></pre>
+      </section>
+
+      <div class="runner-container">
+        <div class="runner-header">
+          <span>Interactive Example: Type Coercion</span>
+          <button class="btn btn-primary run-code-btn" style="padding: 0.3rem 0.8rem;">Run Code ▶</button>
+        </div>
+        <textarea class="runner-code" spellcheck="false">
+console.log(1 + "2" + "2"); // ?
+console.log(1 + +"2" + "2"); // ?
+console.log(1 + -"1" + "2"); // ?
+console.log(+"1" + "1" + "2"); // ?
+console.log( "A" - "B" + "2"); // ?
+console.log( "A" - "B" + 2); // ?
+
+// Run this code to see the actual crazy results!
+        </textarea>
+        <div class="runner-output-box">Output will appear here...</div>
+      </div>
+
+      <section class="practice-section">
+        <h3>Practice Questions</h3>
+        <div class="practice-q">
+          <strong>1.</strong> Output Question: <code>console.log(typeof typeof 1);</code>
+        </div>
+        <div class="practice-q">
+          <strong>2.</strong> Output Question: 
+          <pre style="margin-top:10px; background:#111; padding:10px;">
+let x = { area: 10 };
+let y = x;
+y.area = 50;
+console.log(x.area);
+          </pre>
+        </div>
+      </section>
+
+      <div class="lesson-footer">
+        <button id="mark-complete-btn" class="btn btn-primary">Mark as Complete</button>
+        <a href="../../index.html" class="btn btn-outline">Back to Home ➔</a>
+      </div>
+    </article>
+  </main>
+
+  <script src="../../js/script.js"></script>
+</body>
+</html>

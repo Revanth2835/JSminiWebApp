@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditionals | Learn JavaScript</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body data-lesson-id="conditionals">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <span class="js-logo">JS</span>
+        <h1><a href="../../index.html" style="color:inherit;text-decoration:none;">Learn JavaScript</a></h1>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line></svg>
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main class="container lesson-layout">
+    <aside class="sidebar">
+      <ul class="sidebar-list">
+        <li><h3>Beginner</h3></li>
+        <li><a href="../beginner/variables.html">Variables</a></li>
+        <li><a href="../beginner/data-types.html">Data Types</a></li>
+        <li><a href="../beginner/strings.html">Strings & Methods</a></li>
+        <li><a href="../beginner/conditionals.html" class="active">Conditionals</a></li>
+        <li><a href="../beginner/loops.html">Loops</a></li>
+        <li><h3 style="margin-top:1.5rem">Intermediate</h3></li>
+        <li><a href="../intermediate/objects.html">Objects</a></li>
+        <li><a href="../intermediate/functions.html">Functions</a></li>
+        <li><a href="../intermediate/arrays.html">Arrays & Methods</a></li>
+        <li><h3 style="margin-top:1.5rem">Advanced</h3></li>
+        <li><a href="../advanced/closures.html">Closures</a></li>
+        <li><a href="../advanced/promises.html">Promises & Async</a></li>
+        <li><a href="../advanced/interview-questions.html">Interview Qs</a></li>
+      </ul>
+    </aside>
+
+    <article class="lesson-content">
+      <h1 class="lesson-title">Conditionals</h1>
+      <p class="lesson-definition">Conditionals allow your code to make decisions. They execute different blocks of code based on whether a specific condition evaluates to true or false.</p>
+
+      <details class="analogy-box">
+        <summary>Real-world Analogy</summary>
+        <div class="details-content">
+          <p>Conditionals are like a fork in a road or an intersection. IF the light is green, you drive. ELSE IF the light is yellow, you slow down. ELSE (meaning red), you stop.</p>
+        </div>
+      </details>
+
+      <section class="code-section">
+        <h3>Syntax Overview</h3>
+        <p>The standard `if...else` statement:</p>
+        <pre><code><span class="token-keyword">if</span> (condition) {
+  <span class="token-comment">// Runs if true</span>
+} <span class="token-keyword">else if</span> (otherCondition) {
+  <span class="token-comment">// Runs if first is false and second is true</span>
+} <span class="token-keyword">else</span> {
+  <span class="token-comment">// Runs if nothing else was true</span>
+}</code></pre>
+      </section>
+
+      <div class="runner-container">
+        <div class="runner-header">
+          <span>Interactive Example</span>
+          <button class="btn btn-primary run-code-btn" style="padding: 0.3rem 0.8rem;">Run Code ▶</button>
+        </div>
+        <textarea class="runner-code" spellcheck="false">
+const age = 17;
+
+if (age >= 18) {
+  console.log("You can vote!");
+} else if (age >= 16) {
+  console.log("You can drive, but not vote yet.");
+} else {
+  console.log("You are too young to drive or vote.");
+}
+        </textarea>
+        <div class="runner-output-box">Output will appear here...</div>
+      </div>
+
+      <section class="practice-section">
+        <h3>Practice Questions</h3>
+        <div class="practice-q">
+          <strong>1.</strong> Write an `if / else` statement that checks weather = "raining". If true, log "Take an umbrella", otherwise log "Enjoy the sun!".
+        </div>
+        <div class="practice-q">
+          <strong>2.</strong> (Research) What is the difference between `==` and `===` inside an if-statement condition?
+        </div>
+      </section>
+
+      <div class="lesson-footer">
+        <button id="mark-complete-btn" class="btn btn-primary">Mark as Complete</button>
+        <a href="../beginner/loops.html" class="btn btn-outline">Next: Loops ➔</a>
+      </div>
+    </article>
+  </main>
+
+  <script src="../../js/script.js"></script>
+</body>
+</html>

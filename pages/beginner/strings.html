@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strings & Methods | Learn JavaScript</title>
+  <title>Strings & Methods API | Learn JavaScript</title>
   <link rel="stylesheet" href="../../css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -27,13 +27,13 @@
         <li><h3>Beginner</h3></li>
         <li><a href="../beginner/variables.html">Variables</a></li>
         <li><a href="../beginner/data-types.html">Data Types</a></li>
-        <li><a href="../beginner/strings.html" class="active">Strings & Methods</a></li>
+        <li><a href="../beginner/strings.html" class="active">Strings & Methods API</a></li>
         <li><a href="../beginner/conditionals.html">Conditionals</a></li>
         <li><a href="../beginner/loops.html">Loops</a></li>
         <li><h3 style="margin-top:1.5rem">Intermediate</h3></li>
         <li><a href="../intermediate/objects.html">Objects</a></li>
         <li><a href="../intermediate/functions.html">Functions</a></li>
-        <li><a href="../intermediate/arrays.html">Arrays & Methods</a></li>
+        <li><a href="../intermediate/arrays.html">Arrays & Methods API</a></li>
         <li><h3 style="margin-top:1.5rem">Advanced</h3></li>
         <li><a href="../advanced/closures.html">Closures</a></li>
         <li><a href="../advanced/promises.html">Promises & Async</a></li>
@@ -41,57 +41,234 @@
       </ul>
     </aside>
 
-    <article class="lesson-content">
-      <h1 class="lesson-title">Strings & Methods</h1>
-      <p class="lesson-definition">Strings represent text. JavaScript strings come with built-in properties and methods to easily measure length, replace words, change casing, and slice parts out of the text.</p>
-
-      <details class="analogy-box">
-        <summary>Real-world Analogy</summary>
-        <div class="details-content">
-          <p>Imagine a String as a bead necklace where each character is a bead. String methods are like tools you use on the necklace: `.length` counts the beads, `.toUpperCase()` paints them all bright, and `.slice()` cuts a specific section out for you.</p>
-        </div>
-      </details>
+    <article class="lesson-content" style="max-width: 100%;">
+      <h1 class="lesson-title">Strings & Methods (API Reference)</h1>
+      <p class="lesson-definition">A comprehensive guide to JavaScript Strings. Strings represent text, and JavaScript provides a rich set of built-in properties and methods to analyze, extract, and manipulate textual data easily. Note: In JavaScript, strings are <b>immutable</b>, meaning string methods always return a new string, rather than modifying the original.</p>
 
       <section class="code-section">
-        <h3>Syntax Overview</h3>
-        <p>Using built-in String methods:</p>
-        <pre><code><span class="token-keyword">let</span> txt = <span class="token-string">"Hello World"</span>;
-console.log(txt.length); <span class="token-comment">// 11</span>
-console.log(txt.<span class="token-function">toUpperCase</span>()); <span class="token-comment">// "HELLO WORLD"</span>
-console.log(txt.<span class="token-function">replace</span>(<span class="token-string">"World"</span>, <span class="token-string">"JS"</span>)); <span class="token-comment">// "Hello JS"</span></code></pre>
+        <h3>Creating Strings & The <code>.length</code> Property</h3>
+        <p>The `length` property returns the precise number of characters (including whitespaces) inside a given string.</p>
+        <div class="runner-container">
+          <div class="runner-header"><span>String.prototype.length</span><button class="btn btn-primary run-code-btn" style="padding: 0.3rem 0.8rem;">Run Code ▶</button></div>
+          <textarea class="runner-code" spellcheck="false">
+const msg = "Hello JS!";
+console.log("Length:", msg.length); // 9 characters
+          </textarea>
+          <div class="runner-output-box"></div>
+        </div>
       </section>
 
-      <div class="runner-container">
-        <div class="runner-header">
-          <span>Interactive Example</span>
-          <button class="btn btn-primary run-code-btn" style="padding: 0.3rem 0.8rem;">Run Code ▶</button>
-        </div>
-        <textarea class="runner-code" spellcheck="false">
-const quote = "  Learning JavaScript is fun!  ";
+      <div class="methods-grid">
+        <!-- CATEGORY: CHARACTER ACCESS -->
+        <details class="method-accordion">
+          <summary>🔍 Character Access & Codes</summary>
+          
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.charAt() / at()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: String</span></div>
+            <p class="method-desc">Returns the character precisely at the specified index. The newer `.at()` method allows negative integers to count backward from the end.</p>
+            <div class="method-details">
+              <h4>Syntax</h4>
+              <ul><li><code>str.charAt(index)</code></li><li><code>str.at(index)</code> (Supports negative indices)</li></ul>
+            </div>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const word = "JavaScript";
+console.log("charAt(4):", word.charAt(4)); // "S"
+console.log("at(-1):", word.at(-1)); // "t" (last character)
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
 
-// 1. Removing extra whitespace
-const cleanQuote = quote.trim();
-console.log("Trimmed:", cleanQuote);
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.charCodeAt() / codePointAt()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: Integer</span></div>
+            <p class="method-desc">Returns the UTF-16 code (an integer from 0 to 65535) or full Unicode code point representing the character at the specified index.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const symbol = "😊";
+console.log("Code point:", symbol.codePointAt(0)); // 128522
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+        </details>
 
-// 2. Slicing out a piece 
-const language = cleanQuote.slice(9, 19);
-console.log("Extracted Word:", language);
+        <!-- CATEGORY: SEARCHING & MATCHING -->
+        <details class="method-accordion">
+          <summary>🔎 Searching & Matching</summary>
+          
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.indexOf() / lastIndexOf()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: Integer (Index)</span></div>
+            <p class="method-desc">Returns the index of the first (or last) occurrence of a substring. Returns <code>-1</code> if not found.</p>
+            <div class="method-details">
+              <h4>Syntax</h4>
+              <ul><li><code>str.indexOf(searchString, position?)</code></li></ul>
+            </div>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const sentence = "The quick brown fox jumps over the lazy fox.";
+console.log("First 'fox':", sentence.indexOf("fox")); // 16
+console.log("Next 'fox':", sentence.indexOf("fox", 17)); // 40
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
 
-// 3. Changing cases
-console.log("Loud:", cleanQuote.toUpperCase());
-        </textarea>
-        <div class="runner-output-box">Output will appear here...</div>
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.includes() / startsWith() / endsWith()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: Boolean</span></div>
+            <p class="method-desc">Convenience methods to quickly check if a string contains, starts with, or ends with a specific substring. Highly useful for conditionals.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const url = "https://developer.mozilla.org";
+console.log("Is secure?", url.startsWith("https")); // true
+console.log("Is org?", url.endsWith(".org")); // true
+console.log("Contains mozilla?", url.includes("mozilla")); // true
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.match() / matchAll()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: Array / Iterator</span></div>
+            <p class="method-desc">Retrieves the results of matching a string against a Regular Expression. <code>matchAll</code> is ideal for globally matching multiple capture groups.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const text = "Contact me at bob@email.com or alice@email.com";
+const regex = /[a-z]+@[a-z]+\.[a-z]+/g;
+console.log(text.match(regex)); // Array of emails
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.search()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: Integer (Index)</span></div>
+            <p class="method-desc">Executes a search for a match between a regular expression and this String. Returns the index of the first match, or `-1`.</p>
+          </div>
+        </details>
+
+        <!-- CATEGORY: EDITING & TRANSFORMING -->
+        <details class="method-accordion">
+          <summary>🛠 Editing & Substrings</summary>
+          
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.slice() / substring()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: New String</span></div>
+            <p class="method-desc">Extracts a section of a string and returns it as a new string, without modifying the original. <code>slice()</code> supports negative indices to extract from the end!</p>
+            <div class="method-details">
+              <h4>Syntax</h4>
+              <ul><li><code>str.slice(indexStart, indexEnd?)</code></li></ul>
+            </div>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const str = "The morning is upon us.";
+console.log("slice(4, 11):", str.slice(4, 11)); // "morning"
+console.log("slice(-3):", str.slice(-3)); // "us."
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.replace() / replaceAll()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: New String</span></div>
+            <p class="method-desc">Replaces a pattern (string or RegExp) in the string with a replacement string.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const text = "Apples are round, and apples are juicy.";
+console.log(text.replace("Apples", "Oranges"));
+console.log(text.replaceAll(/apples/gi, "Oranges"));
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.toLowerCase() / toUpperCase()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: New String</span></div>
+            <p class="method-desc">Returns the calling string value converted to lower or upper case. Crucial for case-insensitive string comparisons.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const loud = "HELLO";
+console.log(loud.toLowerCase() === "hello"); // true
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.trim() / trimStart() / trimEnd()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: New String</span></div>
+            <p class="method-desc">Removes whitespace from both ends, or just the start/end of a string. Excellent for cleaning up form inputs.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const input = "   user@email.com   ";
+console.log("Cleaned:", input.trim()); // "user@email.com"
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.padStart() / padEnd()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: New String</span></div>
+            <p class="method-desc">Pads the current string with another string until the resulting string reaches the given length.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const cardNumber = "4444";
+// Useful for masking!
+console.log(cardNumber.padStart(16, "*")); // "************4444"
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+          
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.split()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: Array of Strings</span></div>
+            <p class="method-desc">Divides a String into an ordered list of substrings by splitting on a pattern, puts them into an Array, and returns the Array. The bridge between Strings and Arrays!</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const words = "apple,banana,cherry";
+const arr = words.split(",");
+console.log("Array:", arr); 
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>String.prototype.concat() / repeat()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: New String</span></div>
+            <p class="method-desc"><code>concat()</code> combines string instances (though <code>+</code> or template literals are more common). <code>repeat()</code> constructs a new string containing a specified number of copies of the string.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+console.log("Ha".repeat(3)); // "HaHaHa"
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+        </details>
       </div>
-
-      <section class="practice-section">
-        <h3>Practice Questions</h3>
-        <div class="practice-q">
-          <strong>1.</strong> Create a string with your full name. Use a string method to print only your last name.
-        </div>
-        <div class="practice-q">
-          <strong>2.</strong> Given <code>const item = "apple"</code>, change it so it logs <code>"APPLE"</code> to the console.
-        </div>
-      </section>
 
       <div class="lesson-footer">
         <button id="mark-complete-btn" class="btn btn-primary">Mark as Complete</button>

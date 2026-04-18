@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arrays & Methods | Learn JavaScript</title>
+  <title>Arrays & Methods API | Learn JavaScript</title>
   <link rel="stylesheet" href="../../css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -27,13 +27,13 @@
         <li><h3>Beginner</h3></li>
         <li><a href="../beginner/variables.html">Variables</a></li>
         <li><a href="../beginner/data-types.html">Data Types</a></li>
-        <li><a href="../beginner/strings.html">Strings & Methods</a></li>
+        <li><a href="../beginner/strings.html">Strings & Methods API</a></li>
         <li><a href="../beginner/conditionals.html">Conditionals</a></li>
         <li><a href="../beginner/loops.html">Loops</a></li>
         <li><h3 style="margin-top:1.5rem">Intermediate</h3></li>
         <li><a href="../intermediate/objects.html">Objects</a></li>
         <li><a href="../intermediate/functions.html">Functions</a></li>
-        <li><a href="../intermediate/arrays.html" class="active">Arrays & Methods</a></li>
+        <li><a href="../intermediate/arrays.html" class="active">Arrays & Methods API</a></li>
         <li><h3 style="margin-top:1.5rem">Advanced</h3></li>
         <li><a href="../advanced/closures.html">Closures</a></li>
         <li><a href="../advanced/promises.html">Promises & Async</a></li>
@@ -41,57 +41,284 @@
       </ul>
     </aside>
 
-    <article class="lesson-content">
-      <h1 class="lesson-title">Arrays & Methods</h1>
-      <p class="lesson-definition">An array is a special kind of object used to store multiple values in a single ordered list. Arrays come with powerful built-in methods like <code>map()</code>, <code>filter()</code>, and <code>reduce()</code>.</p>
-
-      <details class="analogy-box">
-        <summary>Real-world Analogy</summary>
-        <div class="details-content">
-          <p>An array is like a bookshelf. You can place many books (values) on it, and each position has an exact index number (starting from 0). Array methods are like librarians who specifically pull out matching books (filter) or translate all titles to another language (map).</p>
-        </div>
-      </details>
+    <article class="lesson-content" style="max-width: 100%;">
+      <h1 class="lesson-title">Arrays & Methods (API Reference)</h1>
+      <p class="lesson-definition">Arrays are list-like objects whose prototype has methods to perform traversal and mutation operations. Understanding Array methods is a critical requirement for intermediate JavaScript. <br><br><strong>Note:</strong> Some array methods <span style="color:var(--accent-error)">mutate</span> the original array (like <code>push</code> or <code>sort</code>), while others return a <span style="color:var(--accent-success)">new</span> array entirely (like <code>map</code> or <code>filter</code>).</p>
 
       <section class="code-section">
-        <h3>Syntax Overview</h3>
-        <p>Declaring and using functional array methods:</p>
-        <pre><code><span class="token-keyword">const</span> nums = [<span class="token-number">1</span>, <span class="token-number">2</span>, <span class="token-number">3</span>];
-<span class="token-keyword">const</span> doubled = nums.<span class="token-function">map</span>(n => n * <span class="token-number">2</span>); <span class="token-comment">// [2, 4, 6]</span>
-<span class="token-keyword">const</span> sum = nums.<span class="token-function">reduce</span>((total, n) => total + n, <span class="token-number">0</span>); <span class="token-comment">// 6</span></code></pre>
+        <h3>Creating Arrays & length</h3>
+        <div class="runner-container">
+          <div class="runner-header"><span>Init & length</span><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+          <textarea class="runner-code" spellcheck="false">
+const fruits = ["Apple", "Banana", "Orange"];
+console.log("Length:", fruits.length); // 3
+
+// Changing length truncates the array!
+fruits.length = 1;
+console.log(fruits); // ["Apple"]
+          </textarea>
+          <div class="runner-output-box"></div>
+        </div>
       </section>
 
-      <div class="runner-container">
-        <div class="runner-header">
-          <span>Interactive Example</span>
-          <button class="btn btn-primary run-code-btn" style="padding: 0.3rem 0.8rem;">Run Code ▶</button>
-        </div>
-        <textarea class="runner-code" spellcheck="false">
-const numbers = [5, 10, 15, 20, 25];
+      <div class="methods-grid">
+        
+        <!-- CATEGORY: MUTATOR METHODS -->
+        <details class="method-accordion" open>
+          <summary>⚠️ Mutator Methods (Changes Original)</summary>
+          
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.push() / pop()</h3></div>
+            <div class="method-meta">
+              <span class="meta-tag mutates">Mutates original</span>
+              <span class="meta-tag returns">Returns: New Length / Popped Item</span>
+            </div>
+            <p class="method-desc"><strong>push()</strong> adds one or more elements to the <em>end</em> of an array, returning the new length.<br><strong>pop()</strong> removes the <em>last</em> element from an array and returns that element.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const stack = [1, 2];
+stack.push(3); 
+console.log("After push:", stack);
 
-// MAP: Returns a new array with changes applied to each item
-const halves = numbers.map(num => num / 2);
-console.log("Mapped (halved):", halves);
+const removed = stack.pop();
+console.log("Popped:", removed, "Stack:", stack);
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
 
-// FILTER: Returns a new array with ONLY items that pass condition
-const largeNumbers = numbers.filter(num => num > 12);
-console.log("Filtered (>12):", largeNumbers);
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.unshift() / shift()</h3></div>
+            <div class="method-meta">
+              <span class="meta-tag mutates">Mutates original</span>
+              <span class="meta-tag returns">Returns: New Length / Shifted Item</span>
+            </div>
+            <p class="method-desc"><strong>unshift()</strong> adds one or more elements to the <em>beginning</em> of an array.<br><strong>shift()</strong> removes the <em>first</em> element from an array.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const queue = ["b", "c"];
+queue.unshift("a"); 
+console.log("After unshift:", queue);
 
-// REDUCE: Accumulates all values into a single result
-const sumTotal = numbers.reduce((acc, curr) => acc + curr, 0);
-console.log("Reduced (summing up):", sumTotal);
-        </textarea>
-        <div class="runner-output-box">Output will appear here...</div>
+queue.shift();
+console.log("After shift:", queue);
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.splice()</h3></div>
+            <div class="method-meta">
+              <span class="meta-tag mutates">Mutates original</span>
+              <span class="meta-tag returns">Returns: Array of removed items</span>
+            </div>
+            <p class="method-desc">Changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.</p>
+            <div class="method-details">
+              <h4>Syntax</h4>
+              <ul><li><code>arr.splice(start, deleteCount, item1, item2...)</code></li></ul>
+            </div>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const months = ['Jan', 'March', 'April', 'June'];
+// Insert 'Feb' at index 1, delete 0 elements
+months.splice(1, 0, 'Feb');
+console.log(months);
+
+// Replace 1 element at index 4 with 'May'
+months.splice(4, 1, 'May');
+console.log(months);
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+          
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.sort() / reverse()</h3></div>
+            <div class="method-meta"><span class="meta-tag mutates">Mutates original</span></div>
+            <p class="method-desc"><strong>sort()</strong> sorts the elements of an array <em>in place</em> and returns the sorted array. The default sort order is alphabetical (converting elements to strings). To sort numbers, provide a compare function.<br><strong>reverse()</strong> simply reverses the array in place.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const numbers = [4, 2, 5, 1, 3];
+// Sorting numbers properly requires a compare function:
+numbers.sort((a, b) => a - b);
+console.log("Sorted:", numbers);
+
+numbers.reverse();
+console.log("Reversed:", numbers);
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+        </details>
+
+        <!-- CATEGORY: ACCESSOR METHODS -->
+        <details class="method-accordion">
+          <summary>🔍 Accessor Methods (Does NOT mutate)</summary>
+          
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.slice()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: New Array</span></div>
+            <p class="method-desc">Returns a shallow copy of a portion of an array into a new array selected from start to end (end not included). The original array will not be modified.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+console.log("slice(2):", animals.slice(2)); 
+console.log("slice(2, 4):", animals.slice(2, 4));
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.concat()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: New Array</span></div>
+            <p class="method-desc">Used to merge two or more arrays. This method does not change the existing arrays, but instead returns a new array.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const arr1 = ['a', 'b', 'c'];
+const arr2 = ['d', 'e', 'f'];
+console.log(arr1.concat(arr2));
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.join()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: String</span></div>
+            <p class="method-desc">Creates and returns a new string by concatenating all of the elements in an array, separated by commas or a specified separator string.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const elements = ['Fire', 'Air', 'Water'];
+console.log(elements.join());      // "Fire,Air,Water"
+console.log(elements.join(' - ')); // "Fire - Air - Water"
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.indexOf() / includes()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: Integer / Boolean</span></div>
+            <p class="method-desc"><strong>indexOf()</strong> returns the first index at which a given element can be found, or -1 if not present. <br><strong>includes()</strong> determines whether an array includes a certain value among its entries, returning true or false.</p>
+          </div>
+        </details>
+
+        <!-- CATEGORY: ITERATOR METHODS -->
+        <details class="method-accordion" open>
+          <summary>🔄 Iterator Methods (Callbacks)</summary>
+          
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.forEach()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: undefined</span></div>
+            <p class="method-desc">Executes a provided function once for each array element. Great for running side-effects (like logging or modifying external variables).</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const letters = ['a', 'b', 'c'];
+letters.forEach((item, index) => {
+  console.log(`Index ${index}: ${item}`);
+});
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.map()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: New Array</span></div>
+            <p class="method-desc">Creates a new array populated with the results of calling a provided function on every element in the calling array. Indispensable for transforming data securely.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const numbers = [1, 4, 9];
+const doubles = numbers.map(num => num * 2);
+console.log("Original:", numbers, "Map Result:", doubles);
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.filter()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: New Array</span></div>
+            <p class="method-desc">Creates a shallow copy of a portion of a given array, filtered down to just the elements from the given array that pass the test implemented by the provided function.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction'];
+const longWords = words.filter(word => word.length > 6);
+console.log("Filtered:", longWords);
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.reduce()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: Single Value</span></div>
+            <p class="method-desc">Executes a user-supplied "reducer" callback function on each element of the array, passing in the return value from the calculation on the preceding element. The final result is a single value.</p>
+            <div class="method-details">
+              <h4>Syntax</h4>
+              <ul><li><code>arr.reduce((accumulator, currentValue) => { ... }, initialValue)</code></li></ul>
+            </div>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const array1 = [1, 2, 3, 4];
+// 0 + 1 + 2 + 3 + 4
+const sumWithInitial = array1.reduce(
+  (accumulator, currentValue) => accumulator + currentValue,
+  0
+);
+console.log("Sum:", sumWithInitial);
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.find() / findIndex()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: Element / Integer</span></div>
+            <p class="method-desc"><strong>find()</strong> returns the first element in the provided array that satisfies the provided testing function.<br><strong>findIndex()</strong> returns the index of the first element that satisfies the function.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const array1 = [5, 12, 8, 130, 44];
+const found = array1.find(element => element > 10);
+console.log("First > 10:", found); // 12
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+          <div class="method-card">
+            <div class="method-signature"><h3>Array.prototype.some() / every()</h3></div>
+            <div class="method-meta"><span class="meta-tag returns">Returns: Boolean</span></div>
+            <p class="method-desc"><strong>some()</strong> tests whether at least one element in the array passes the provided function.<br><strong>every()</strong> tests whether all elements pass the provided function.</p>
+            <div class="runner-container">
+              <div class="runner-header"><button class="btn btn-primary run-code-btn">Run Code ▶</button></div>
+              <textarea class="runner-code" spellcheck="false">
+const array = [1, 2, 3, 4, 5];
+// Checks whether an element is even
+const even = (element) => element % 2 === 0;
+console.log("Has even number?", array.some(even)); // true
+console.log("All numbers even?", array.every(even)); // false
+              </textarea>
+              <div class="runner-output-box"></div>
+            </div>
+          </div>
+
+        </details>
       </div>
-
-      <section class="practice-section">
-        <h3>Practice Questions</h3>
-        <div class="practice-q">
-          <strong>1.</strong> Create an array of strings (names). Use <code>filter()</code> to get a new array of names that are longer than 4 characters.
-        </div>
-        <div class="practice-q">
-          <strong>2.</strong> Given <code>[1,2,3]</code>, use <code>map()</code> to add the string <code>" ID"</code> to each number so you get <code>["1 ID", "2 ID", "3 ID"]</code>.
-        </div>
-      </section>
 
       <div class="lesson-footer">
         <button id="mark-complete-btn" class="btn btn-primary">Mark as Complete</button>
